@@ -21,6 +21,8 @@ kind: IBPPeer
 metadata:
   name: org1-peer1
 spec:
+  imagePullSecrets:
+    - ecr-creds
   version: "${FABRIC_VERSION}"
   domain: "${INGRESS_DOMAIN}"
   peerExternalEndpoint: "test-network-org1-peer1-peer.${INGRESS_DOMAIN}:443"
@@ -33,6 +35,34 @@ spec:
     peer:
       keepalive:
         minInterval: 61s
+    chaincode:
+      # The Kaleido peer image ships the chaincode_builder client at
+      # /opt/hyperledger/chaincode_builder; the operator's default core.yaml uses
+      # the legacy IBP path /usr/local, so the ibp-builder external builder is
+      # skipped and golang chaincode installs fall through to a disabled docker
+      # build. Override the path here. MergeWith (mergo) overwrites the whole
+      # slice, so all three builders must be listed. See
+      # fabric-adoption-pipeline/docs/k8s-chaincode-builder-gate.md.
+      externalBuilders:
+        - name: ibp-builder
+          path: /opt/hyperledger/chaincode_builder
+          environmentWhiteList:
+            - IBP_BUILDER_ENDPOINT
+            - IBP_BUILDER_SHARED_DIR
+          propagateEnvironment:
+            - IBP_BUILDER_ENDPOINT
+            - IBP_BUILDER_SHARED_DIR
+            - PEER_NAME
+        - name: k8s_builder
+          path: /opt/hyperledger/k8s_builder
+          propagateEnvironment:
+            - CORE_PEER_ID
+            - KUBERNETES_SERVICE_HOST
+            - KUBERNETES_SERVICE_PORT
+        - name: ccaas-builder
+          path: /opt/hyperledger/ccaas_builder
+          propagateEnvironment:
+            - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG
   customNames:
     pvc: {}
   images:
@@ -42,6 +72,16 @@ spec:
     peerTag: ${PEER_IMAGE_LABEL}
     grpcwebImage: ${GRPCWEB_IMAGE}
     grpcwebTag: ${GRPCWEB_IMAGE_LABEL}
+    couchdbImage: ${COUCHDB_IMAGE}
+    couchdbTag: ${COUCHDB_IMAGE_LABEL}
+    chaincodeLauncherImage: ${CHAINCODE_LAUNCHER_IMAGE}
+    chaincodeLauncherTag: ${CHAINCODE_LAUNCHER_IMAGE_LABEL}
+    fileTransferImage: ${FILETRANSFER_IMAGE}
+    fileTransferTag: ${FILETRANSFER_IMAGE_LABEL}
+    builderImage: ${BUILDER_IMAGE}
+    builderTag: ${BUILDER_IMAGE_LABEL}
+    goEnvImage: ${GOENV_IMAGE}
+    goEnvTag: ${GOENV_IMAGE_LABEL}
   mspID: Org1MSP
   mspSecret: org1-peer1-secret
   secret:

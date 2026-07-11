@@ -86,6 +86,20 @@ context GRPCWEB_IMAGE             ghcr.io/hyperledger-labs/grpc-web
 context GRPCWEB_IMAGE_LABEL       latest
 context COUCHDB_IMAGE             couchdb
 context COUCHDB_IMAGE_LABEL       3.3.3
+
+# Kaleido chaincode_builder / ledger images used by the peer CRs. These have no
+# upstream equivalent, so they default to the Kaleido ECR; override any of them
+# via TEST_NETWORK_<NAME> (e.g. TEST_NETWORK_BUILDER_IMAGE_LABEL). The peer CRs
+# reference them as ${CHAINCODE_LAUNCHER_IMAGE}, ${BUILDER_IMAGE} (ccenv), etc.
+context CHAINCODE_LAUNCHER_IMAGE       604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-chaincode-launcher
+context CHAINCODE_LAUNCHER_IMAGE_LABEL latest
+context BUILDER_IMAGE                  604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-ccenv
+context BUILDER_IMAGE_LABEL            latest
+context GOENV_IMAGE                    604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-goenv
+context GOENV_IMAGE_LABEL              latest
+context FILETRANSFER_IMAGE             604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-filetransfer
+context FILETRANSFER_IMAGE_LABEL       latest
+
 context CONSOLE_IMAGE             ghcr.io/hyperledger-labs/fabric-console
 context CONSOLE_IMAGE_LABEL       latest
 context DEPLOYER_IMAGE            ghcr.io/ibm-blockchain/fabric-deployer

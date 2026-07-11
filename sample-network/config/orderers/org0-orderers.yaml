@@ -21,6 +21,8 @@ kind: IBPOrderer
 metadata:
   name: org0-orderers
 spec:
+  imagePullSecrets:
+    - ecr-creds
   version: "${FABRIC_VERSION}"
   domain: "${INGRESS_DOMAIN}"
   license:

@@ -21,6 +21,8 @@ kind: IBPCA
 metadata:
   name: org0-ca
 spec:
+  imagePullSecrets:
+    - ecr-creds
   action:
     renew: {}
   configoverride:
