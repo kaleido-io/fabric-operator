@@ -34,7 +34,11 @@ spec:
   configoverride:
     peer:
       keepalive:
-        minInterval: 61s
+        # Must be < the chaincode shim's ~60s keepalive ping, or an idle
+        # chaincode connection is dropped with GOAWAY/ENHANCE_YOUR_CALM
+        # (too_many_pings). 15s also stays below the peer's 30s delivery/gossip
+        # client pings.
+        minInterval: 15s
     chaincode:
       # The Kaleido peer image ships the chaincode_builder client at
       # /opt/hyperledger/chaincode_builder; the operator's default core.yaml uses
