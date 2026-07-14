@@ -80,7 +80,11 @@ context TOOLS_IMAGE               ${FABRIC_CONTAINER_REGISTRY}/fabric-tools
 context TOOLS_IMAGE_LABEL         ${FABRIC_VERSION}
 context OPERATOR_IMAGE            ghcr.io/hyperledger-labs/fabric-operator
 context OPERATOR_IMAGE_LABEL      latest-amd64
-context INIT_IMAGE                registry.access.redhat.com/ubi8/ubi-minimal
+# Node init image. Also reused by the operator as the chaincode launcher's
+# file-transfer helper (FILETRANSFERIMAGE ← peerInitImage), so it must carry
+# curl+tar+busybox — kaleido-fabric-init does. A plain base (e.g. ubi-minimal)
+# breaks golang/java/node chaincode installs with 'curl: not found'.
+context INIT_IMAGE                604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-init
 context INIT_IMAGE_LABEL          latest
 context GRPCWEB_IMAGE             ghcr.io/hyperledger-labs/grpc-web
 context GRPCWEB_IMAGE_LABEL       latest
@@ -97,7 +101,9 @@ context BUILDER_IMAGE                  604386504253.dkr.ecr.us-east-2.amazonaws.
 context BUILDER_IMAGE_LABEL            latest
 context GOENV_IMAGE                    604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-goenv
 context GOENV_IMAGE_LABEL              latest
-context FILETRANSFER_IMAGE             604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-filetransfer
+# fileTransferImage CR field — not consumed by this operator for the launcher
+# (that comes from peerInitImage/INIT_IMAGE); kept for completeness.
+context FILETRANSFER_IMAGE             604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-init
 context FILETRANSFER_IMAGE_LABEL       latest
 
 context CONSOLE_IMAGE             ghcr.io/hyperledger-labs/fabric-console
