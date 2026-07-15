@@ -4,7 +4,6 @@ go 1.24.3
 
 require (
 	github.com/cloudflare/cfssl v1.4.1
-	github.com/docker/docker v28.3.3+incompatible
 	github.com/go-logr/logr v1.4.1
 	github.com/go-logr/zapr v0.4.0
 	github.com/go-test/deep v1.0.2
@@ -16,6 +15,7 @@ require (
 	github.com/imdario/mergo v0.3.12
 	github.com/lib/pq v1.8.0
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.2.3
+	github.com/moby/moby/api v1.55.0
 	github.com/onsi/ginkgo/v2 v2.13.2
 	github.com/onsi/gomega v1.38.2
 	github.com/openshift/api v3.9.1-0.20190924102528-32369d4db2ad+incompatible
@@ -58,7 +58,6 @@ require (
 	github.com/bits-and-blooms/bitset v1.20.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/eapache/go-resiliency v1.2.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect
@@ -108,7 +107,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
-	github.com/opencontainers/image-spec v1.1.0-rc6 // indirect
+	github.com/opencontainers/image-spec v1.1.1 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pierrec/lz4 v2.6.0+incompatible // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
