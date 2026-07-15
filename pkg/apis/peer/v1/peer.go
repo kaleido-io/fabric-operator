@@ -20,7 +20,7 @@ package v1
 
 import (
 	"github.com/IBM-Blockchain/fabric-operator/pkg/apis/common"
-	"github.com/docker/docker/api/types/container"
+	"github.com/moby/moby/api/types/container"
 )
 
 type Core struct {

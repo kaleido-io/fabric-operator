@@ -1,0 +1,47 @@
+Warning: resource namespaces/test-network is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+namespace/test-network configured
+namespace/test-network labeled
+serviceaccount/hlf-operator created
+clusterrole.rbac.authorization.k8s.io/hlf-operator-role unchanged
+clusterrolebinding.rbac.authorization.k8s.io/hlf-operator-rolebinding unchanged
+deployment.apps/fabric-operator created
+Waiting for deployment "fabric-operator" rollout to finish: 0 of 1 updated replicas are available...
+deployment "fabric-operator" successfully rolled out
+ibpca.ibp.com/org0-ca created
+ibpca.ibp.com/org1-ca created
+ibpca.ibp.com/org2-ca created
+ibpca.ibp.com/org0-ca condition met
+Waiting for deployment "org0-ca" rollout to finish: 0 of 1 updated replicas are available...
+deployment "org0-ca" successfully rolled out
+ibpca.ibp.com/org1-ca condition met
+deployment "org1-ca" successfully rolled out
+ibpca.ibp.com/org2-ca condition met
+deployment "org2-ca" successfully rolled out
+Enrolling org0 root CA admin rcaadmin
+writing org0-ca connection profile to /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/cas/org0-ca/connection-profile.json
+2026/07/13 17:18:04 [INFO] Created a default configuration file at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org0/users/rcaadmin/fabric-ca-client-config.yaml
+2026/07/13 17:18:04 [INFO] TLS Enabled
+2026/07/13 17:18:04 [INFO] generating key: &{A:ecdsa S:256}
+2026/07/13 17:18:04 [INFO] encoded CSR
+2026/07/13 17:18:05 [INFO] Stored client certificate at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org0/users/rcaadmin/msp/signcerts/cert.pem
+2026/07/13 17:18:05 [INFO] Stored root CA certificate at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org0/users/rcaadmin/msp/cacerts/test-network-org0-ca-ca-localho-st-443.pem
+2026/07/13 17:18:05 [INFO] Stored Issuer public key at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org0/users/rcaadmin/msp/IssuerPublicKey
+2026/07/13 17:18:05 [INFO] Stored Issuer revocation public key at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org0/users/rcaadmin/msp/IssuerRevocationPublicKey
+Enrolling org1 root CA admin rcaadmin
+writing org1-ca connection profile to /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/cas/org1-ca/connection-profile.json
+2026/07/13 17:18:05 [INFO] Created a default configuration file at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org1/users/rcaadmin/fabric-ca-client-config.yaml
+2026/07/13 17:18:05 [INFO] TLS Enabled
+2026/07/13 17:18:05 [INFO] generating key: &{A:ecdsa S:256}
+2026/07/13 17:18:05 [INFO] encoded CSR
+2026/07/13 17:18:06 [INFO] Stored client certificate at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org1/users/rcaadmin/msp/signcerts/cert.pem
+2026/07/13 17:18:06 [INFO] Stored root CA certificate at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org1/users/rcaadmin/msp/cacerts/test-network-org1-ca-ca-localho-st-443.pem
+2026/07/13 17:18:06 [INFO] Stored Issuer public key at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org1/users/rcaadmin/msp/IssuerPublicKey
+2026/07/13 17:18:06 [INFO] Stored Issuer revocation public key at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org1/users/rcaadmin/msp/IssuerRevocationPublicKey
+Enrolling org2 root CA admin rcaadmin
+writing org2-ca connection profile to /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/cas/org2-ca/connection-profile.json
+2026/07/13 17:18:06 [INFO] Created a default configuration file at /Users/jimzhang/workspace.fabric/kaleido-io/fabric-operator/sample-network/temp/enrollments/org2/users/rcaadmin/fabric-ca-client-config.yaml
+2026/07/13 17:18:06 [INFO] TLS Enabled
+2026/07/13 17:18:06 [INFO] generating key: &{A:ecdsa S:256}
+2026/07/13 17:18:06 [INFO] encoded CSR
+Error: POST failure of request: POST https://test-network-org2-ca-ca.localho.st:443/enroll
+{"hosts":["Jim-MacBook-Pro.local"],"certificate_request":"-----BEGIN CERTIFICATE REQUEST-----\nMIIBTTCB9QIBADBgMQswCQYDVQQGEwJVUzEXMBUGA1UECBMOTm9ydGggQ2Fyb2xp\nbmExFDASBgNVBAoTC0h5cGVybGVkZ2VyMQ8wDQYDVQQLEwZGYWJyaWMxETAPBgNV\nBAMTCHJjYWFkbWluMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKNJq/U/63t4E\n2AYydHfzVFx6kDf7kPDi8Dq8e9/jZ8RTOy+OxEu+Fe5iF6aLU4efNmAQlaErxw6d\nI8QzyidSqqAzMDEGCSqGSIb3DQEJDjEkMCIwIAYDVR0RBBkwF4IVSmltLU1hY0Jv\nb2stUHJvLmxvY2FsMAoGCCqGSM49BAMCA0cAMEQCIHqMC8YB4Oyb+5ZgyGpAIqRu\n/mDZ8UoikVbZJlH4N0B9AiBFTrqUSYfcpUE8BSsMPDA0l4pFNzVYtF6HmMNDhlXm\nyw==\n-----END CERTIFICATE REQUEST-----\n","profile":"","crl_override":"","label":"","NotBefore":"0001-01-01T00:00:00Z","NotAfter":"0001-01-01T00:00:00Z","ReturnPrecert":false,"CAName":""}: Post "https://test-network-org2-ca-ca.localho.st:443/enroll": dial tcp [::1]:443: connect: connection refused
