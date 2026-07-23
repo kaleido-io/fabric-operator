@@ -4,8 +4,11 @@ kind: IBPConsole
 metadata:
   name: hlf-console
 spec:
-  arch:
-    - amd64
+  # No arch pin: the operator turns spec.arch into a required kubernetes.io/arch
+  # node affinity, which strands the console pod on the arm64 runner (the single
+  # KinD node is arch=arm64). The console images are multi-arch, so let it
+  # schedule on whatever arch the node is. (Image tags are set explicitly below,
+  # so dropping arch doesn't change image resolution.)
   license:
     accept: true
   serviceAccountName: default
