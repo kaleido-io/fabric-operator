@@ -14,7 +14,7 @@ spec:
   allowDefaultPassword: true
   # registryURL: ghcr.io/ibm-blockchain
   imagePullSecrets:
-    - ghcr-pull-secret
+    - ecr-creds
   images:
     consoleInitImage: ${INIT_IMAGE}
     consoleInitTag: ${INIT_IMAGE_LABEL}

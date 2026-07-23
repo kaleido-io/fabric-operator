@@ -86,6 +86,10 @@ spec:
     builderTag: ${BUILDER_IMAGE_LABEL}
     goEnvImage: ${GOENV_IMAGE}
     goEnvTag: ${GOENV_IMAGE_LABEL}
+    javaEnvImage: ${JAVAENV_IMAGE}
+    javaEnvTag: ${JAVAENV_IMAGE_LABEL}
+    nodeEnvImage: ${NODEENV_IMAGE}
+    nodeEnvTag: ${NODEENV_IMAGE_LABEL}
   mspID: Org1MSP
   mspSecret: org1-peer2-secret
   secret:

@@ -101,6 +101,10 @@ context BUILDER_IMAGE                  604386504253.dkr.ecr.us-east-2.amazonaws.
 context BUILDER_IMAGE_LABEL            latest
 context GOENV_IMAGE                    604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-goenv
 context GOENV_IMAGE_LABEL              latest
+context JAVAENV_IMAGE                  604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-javaenv
+context JAVAENV_IMAGE_LABEL            latest
+context NODEENV_IMAGE                  604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-nodeenv
+context NODEENV_IMAGE_LABEL            latest
 # fileTransferImage CR field — not consumed by this operator for the launcher
 # (that comes from peerInitImage/INIT_IMAGE); kept for completeness.
 context FILETRANSFER_IMAGE             604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-init
