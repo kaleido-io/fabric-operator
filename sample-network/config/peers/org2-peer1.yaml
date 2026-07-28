@@ -40,6 +40,16 @@ spec:
         # client pings.
         minInterval: 15s
     chaincode:
+      # These org2 peers build java chaincode on the JDK 25 javaenv (Gradle 9).
+      # In a fresh KinD build pod (no gradle cache) the wrapper re-downloads
+      # Gradle + all deps and compiles main+test sources, which can exceed the
+      # default ~300s chaincode timeout during `install` — the ibp-builder build
+      # runs synchronously within the install, so the build pod is killed
+      # mid-compile ("timeout expired while executing transaction"). Raise the
+      # build/execute/startup timeouts so the slow JDK-25 build completes.
+      installTimeout: 900s
+      executetimeout: 900s
+      startuptimeout: 900s
       # The Kaleido peer image ships the chaincode_builder client at
       # /opt/hyperledger/chaincode_builder; the operator's default core.yaml uses
       # the legacy IBP path /usr/local, so the ibp-builder external builder is
