@@ -103,6 +103,11 @@ context GOENV_IMAGE                    604386504253.dkr.ecr.us-east-2.amazonaws.
 context GOENV_IMAGE_LABEL              latest
 context JAVAENV_IMAGE                  604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-javaenv
 context JAVAENV_IMAGE_LABEL            latest
+# JDK 25 java env — org2 peers use this (org1 peers use the JDK 11 JAVAENV_IMAGE
+# above) so the gate can build+run java chaincode on both JDKs. Not tagged
+# "latest"; pin the published tag (override via TEST_NETWORK_JAVAENV_25_IMAGE*).
+context JAVAENV_25_IMAGE               604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-javaenv-25
+context JAVAENV_25_IMAGE_LABEL         2.5.10-0
 context NODEENV_IMAGE                  604386504253.dkr.ecr.us-east-2.amazonaws.com/kaleido-fabric-nodeenv
 context NODEENV_IMAGE_LABEL            latest
 # fileTransferImage CR field — not consumed by this operator for the launcher
